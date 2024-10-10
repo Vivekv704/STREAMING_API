@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Stream</title>
+</head>
+<body>
+    <h1>Event Stream from FastAPI</h1>
+    <div id="output"></div>
+
+    <script>
+        const eventSource = new EventSource("http://127.0.0.1:8000/events");
+
+        eventSource.onmessage = function(event) {
+            const newElement = document.createElement("div");
+            newElement.textContent = event.data;
+            document.getElementById("output").appendChild(newElement);
+        };
+    </script>
+</body>
+</html>
